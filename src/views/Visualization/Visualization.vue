@@ -158,10 +158,27 @@ const hospitalData = [
 ]
 onMounted(async () => {
   const viewer = new Viewer('cesiumContainer', {
-    navigationHelpButton: false, // 隐藏导航控制按钮
-    fullscreenButton: false, // 隐藏全屏按钮
-    homeButton: false // 隐藏回到初始视图按钮
+    // 隐藏导航控制按钮
+    navigationHelpButton: false,
+    // 隐藏全屏按钮
+    fullscreenButton: false,
+    // 隐藏回到初始视图按钮
+    homeButton: false,
+    // 隐藏图层选择控件
+    baseLayerPicker: false,
+    // 隐藏地名查找控件
+    geocoder: false,
+    // 隐藏时间线控件
+    timeline: false,
+    // 隐藏动画控件
+    animation: false,
+    // 隐藏场景模式选择控件
+    sceneModePicker: false
   })
+  // 隐藏Logo
+  const cesiumWidgetElement = viewer.cesiumWidget.creditContainer as HTMLElement
+  cesiumWidgetElement.style.display = 'none'
+
   // 地区定位到北京 放大
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(116.3, 39.9, 100000.0)
